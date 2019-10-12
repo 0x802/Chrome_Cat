@@ -1,5 +1,5 @@
 <h1 align="center">
-  Cat Chrome
+  Chrome Cat
   <br>
 </h1>
 <h4 align="center">Chrome Cat pulls/extracts all sensitive information from the Chrome browser.</h4>
