@@ -33,7 +33,6 @@
 ```bash
 $ git clone https://github.com/HathemAhmed/Chrome_Cat.git
 $ cd Cat_Chrome
-$ python3 -m pip install -r requirements.txt
 $ chmod +x chrome_cat.py
 $ ./spread_bot.py 
  
