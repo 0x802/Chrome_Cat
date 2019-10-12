@@ -461,4 +461,4 @@ if __name__ == "__main__":
     except sqlite3.OperationalError:
         echo(f"{stars(4)}The Google Chrome Is Clean Or No Find Files The Google Chrome.")
     
-    echo(f"{stars(1)}Think You For Use Me.")
+    echo(f"{stars(1)}Thank You For Use Me.")
