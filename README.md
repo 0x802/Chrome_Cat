@@ -19,8 +19,8 @@
 
 ------------------------------------------------------------
 ### _Supports_
-- Google chrome Web Browser ( Linux ) **all versions**
-- Chromium Web Browser ( Linux ) **all versions**
+- Google chrome Web Browser ( Linux System ) **all versions**
+- Chromium Web Browser ( Linux System ) **all versions**
 - Using:
   - Python 3
 
