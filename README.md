@@ -23,6 +23,9 @@
 - Chromium Web Browser ( Linux System ) **all versions**
 - Using:
   - Python 3
+  
+- **Please close your web browser when running this tool**
+
 
 ------------------------------------------------------------
 ###  _Install_
