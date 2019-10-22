@@ -5,7 +5,6 @@
 #   |___ |  | |  \ |__| |  | |___ |___ |  |  |                                 #
 #                                                                              #
 #                                                                              #
-#                                                                              #
 # DATE                                                                         #
 # 10/12/2019                                                                   #
 #                                                                              #
@@ -25,13 +24,13 @@ import sys
 try:
     import sqlite3
 except ImportError:
-    print("[!!!] Error import 'sqlite3' model")
+    print("[ ! ] Error import 'sqlite3' model")
     exit()
     
 try:
     import json
 except ImportError:
-    print("[!!!] Error import 'json' model")
+    print("[ ! ] Error import 'json' model")
     exit()
 
 
@@ -462,3 +461,5 @@ if __name__ == "__main__":
         echo(f"{stars(4)}The Google Chrome Is Clean Or No Find Files The Google Chrome.")
     
     echo(f"{stars(1)}Thank You For Use Me.")
+
+# End!
