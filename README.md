@@ -24,6 +24,7 @@
 - Using:
   - Python 3
 
+------------------------------------------------------------
 ### Important
 - ***Please close your web browser when running this tool***
 
