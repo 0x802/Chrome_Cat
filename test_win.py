@@ -54,8 +54,13 @@ if sys.platform in ["linux","linux2"]:
 else:
     R = T = B = G = W = U = F = N = str()
 
-# Information list
-HELP = []
+# Values
+ching   = lambda : True if 'win' in sys.platform else False
+inf     = list()
+pathHome= str()
+g3      = ['Google\\Chrome\\User Data'] if ching() else ['google-chrome', 'chromium']
+g2      = 'AppData\\Local' if ching() else '.config'
+g1      = 'Default'
 
 #######################
 #   Input Forms
@@ -80,12 +85,12 @@ def formProfiles(*args, **kwargs):
              f"{stars(1) if local != '' else stars(2)}local: {local}\n{stars(1) if city != '' else stars(2)}city: {city}\n{stars(1) if state != '' else stars(2)}state: {state}\n{stars(1) if zipcode != '' else stars(2)}"+
              f"zipcode: {zipcode}\n{stars(1) if country != '' else stars(2)}country : {country}\n")
         
-        HELP.append([f"{'='*20}\n{name}", add,local, city, state, zipcode, country])
+        inf.append([f"{'='*20}\n{name}", add,local, city, state, zipcode, country])
     
     if args[0] != False:
         ascMe = yesave()
         if ascMe[0]  == True:
-            save(ascMe[1], HELP)
+            save(ascMe[1], inf)
     
 
 #######################
@@ -108,12 +113,12 @@ def formInputText(*args, **kwargs):
         echo(f"{stars(1) if value != '' else stars(2)}Value: "+
              f"{value[0:50]+ '...' if len(value) > 50 else value } \n")
         
-        HELP.append([f"{'='*20}\n{value}"])
+        inf.append([f"{'='*20}\n{value}"])
     
     if args[0] != False:
         ascMe = yesave()
         if ascMe[0]  == True:
-            save(ascMe[1], HELP)
+            save(ascMe[1], inf)
         
 
 #######################
@@ -139,12 +144,12 @@ def topSite(*args, **kwargs):
              f"{stars(1) if url != '' else stars(2)}url   : "+
              f"{url[0:50]+ '...' if len(url) > 50 else url } \n")
         
-        HELP.append([f"{'='*20}\n{Id+1}", title, url])
+        inf.append([f"{'='*20}\n{Id+1}", title, url])
     
     if args[0] != False:
         ascMe = yesave()
         if ascMe[0]  == True:
-            save(ascMe[1], HELP)
+            save(ascMe[1], inf)
   
     
 #######################
@@ -166,12 +171,12 @@ def historyDownlods(*args, **kwargs):
         echo(f"{stars(1) if url != '' else stars(2)}url : "+
              f"{url[0:50]+ '...' if len(url) > 50 else url } \n")
         
-        HELP.append([f"{'='*20}\n{url}"])
+        inf.append([f"{'='*20}\n{url}"])
     
     if args[0] != False:
         ascMe = yesave()
         if ascMe[0]  == True:
-            save(ascMe[1], HELP)
+            save(ascMe[1], inf)
 
 
 #######################
@@ -196,12 +201,12 @@ def historyUrl(*args, **kwargs):
              f"{stars(1) if url != '' else stars(2)}url: "+
              f"{url[0:50]+'...' if len(url) > 50 else url}\n")
         
-        HELP.append([f"{'='*20}\n{title}", url])
+        inf.append([f"{'='*20}\n{title}", url])
     
     if args[0] != False:
         ascMe = yesave()
         if ascMe[0]  == True:
-            save(ascMe[1], HELP)
+            save(ascMe[1], inf)
 
 
 #######################
@@ -225,12 +230,12 @@ def cookies(*args, **kwargs):
              f"{name}\n{stars(1) if path != '' else stars(2)}path: "+
              f"{path}\n{stars(1) if value!= '' else stars(2)}value: {value}\n")
         
-        HELP.append([f"{'='*20}\n{url}", name,path, value])
+        inf.append([f"{'='*20}\n{url}", name,path, value])
     
     if args[0] != False:
         ascMe = yesave()
         if ascMe[0]  == True:
-            save(ascMe[1], HELP)
+            save(ascMe[1], inf)
 
 
 #######################
@@ -254,12 +259,12 @@ def loginData(*args, **kwargs):
              f"{url} \n{stars(1) if user != '' else stars(2)}User: "+
              f"{user}\n{stars(1) if password != b'' else stars(2)}pass: {password}\n")
 
-        HELP.append([f"{'='*20}\n{url}", user,password])
+        inf.append([f"{'='*20}\n{url}", user,password])
     
     if args[0] != False:
         ascMe = yesave()
         if ascMe[0]  == True:
-            save(ascMe[1], HELP)
+            save(ascMe[1], inf)
 
 
 #######################
@@ -281,7 +286,7 @@ def Bookmarks(*args, **kwargs):
         try:
             echo(f"{stars(1) if value['name'] != '' else stars(2)}{value['name']}\n"+
                  f"{stars(1) if value['url'] != '' else stars(2)}{value['url']}\n")
-            HELP.append([f"{'='*20}\n{value['name']}",value['url']])
+            inf.append([f"{'='*20}\n{value['name']}",value['url']])
 
         except:
             continue
@@ -290,7 +295,7 @@ def Bookmarks(*args, **kwargs):
     if args[0] != False:
         ascMe = yesave()
         if ascMe[0]  == True:
-            save(ascMe[1], HELP)
+            save(ascMe[1], inf)
 
 
 #######################
@@ -316,7 +321,7 @@ def Profile(*args, **kwargs):
         echo(f"{stars(1) if reajson[USE[0]] != '' else stars(2)}User Name: {reajson[USE[0]]}\n"+
              f"{stars(1) if reajson[USE[1]] != '' else stars(2)}Email    : {reajson[USE[1]]}\n")
     
-        HELP.append([f"{'='*20}\n{reajson[USE[0]]}",reajson[USE[1]]])
+        inf.append([f"{'='*20}\n{reajson[USE[0]]}",reajson[USE[1]]])
 
     except:
         pass
@@ -324,30 +329,25 @@ def Profile(*args, **kwargs):
     if args[0] != False:
         ascMe = yesave()
         if ascMe[0]  == True:
-            save(ascMe[1], HELP)
+            save(ascMe[1], inf)
 
 
 ########################################################################
 def get(*args, **kwargs):
-    
-    PATH    = str()
-    G2      = 'AppData\\Local' if 'win' in sys.platform else '.config'
-    G3      = ['Google\\Chrome\\User Data'] if 'win' in sys.platform else ['google-chrome', 'chromium']
-    G1      = 'Default'
-
-    for i in G3:
+    global g3, g2, g1, pathHome
+    for i in g3:
         try:
-            PATH = os.path.join(os.environ.get('USERPROFILE' if 'win' in sys.platform else 'HOME'), G2, i, G1 if args[0] != 'Local State' else '')
-            if os.path.isdir(PATH): break
+            pathHome = os.path.join(os.environ.get('USERPROFILE' if ching() else 'HOME'), g2, i, g1 if args[0] != 'Local State' else '')
+            if os.path.isdir(pathHome): break
             
         except FileNotFoundError:
             pass
 
-    if PATH == '':
+    if pathHome == '':
         echo(f"{stars(4)} No find google chrome ")
         exit()
         
-    return os.path.join(PATH, args[0])
+    return os.path.join(pathHome, args[0])
 
 
 ########################################################################
@@ -398,6 +398,7 @@ def index():
     {stars('8')}Inputs Forms Data
     {stars('9')}Top Site Data
     {stars('0')}All
+    {stars('q')}Exit
 """
     return echo(sm)
     
@@ -433,56 +434,62 @@ def save(*args, **kwargs):
 
 if __name__ == "__main__":
 
-    if '-h' in sys.argv or '--help' in sys.argv:
+    if '-h' in sys.argv or '--inf' in sys.argv:
         echo(f"\t{G}This exploit For Linux{N}")
         exit()
+
+    while True:
+
+        index()
+        start = input(f"\n\n{stars(3)}Use > ")
     
-    index()
-    start = input(f"{stars(3)}Use > ")
-    
-    try:
-        if start == '':
-            echo(f"{stars(4)}Error input")
+        try:
+            if start == '':
+                echo(f"{stars(4)}Error input")
 
-        elif start[0] == '1':   
-            Profile(True)
+            elif start[0] == '1':   
+                Profile(True)
 
-        elif start[0] == '2':
-            Bookmarks(True)
+            elif start[0] == '2':
+                Bookmarks(True)
 
-        elif start[0] == '3':
-            loginData(True)
+            elif start[0] == '3':
+                loginData(True)
 
-        elif start[0] == '4':
-            cookies(True)
+            elif start[0] == '4':
+                cookies(True)
 
-        elif start[0] == '5':
-            historyUrl(True)
+            elif start[0] == '5':
+                historyUrl(True)
 
-        elif start[0] == '6':
-            historyDownlods(True)
-        
-        elif start[0] == '7':
-            formInputText(True)
-
-        elif start[0] == '8':
-            formProfiles(True)
-        
-        elif start[0] == '9':
-            topSite(True)
-
-        elif start[0] == '0':
-            Profile(False);Bookmarks(False);loginData(False);cookies(False);historyUrl(False)
-            historyDownlods(False);formInputText(False);formProfiles(False);topSite(False)
+            elif start[0] == '6':
+                historyDownlods(True)
             
-            ascMe = yesave()
-            if ascMe[0]  == True:save(ascMe[1], HELP)
-        
-        else:
-            echo(f"{stars(4)}Error input")
-            exit()
+            elif start[0] == '7':
+                formInputText(True)
 
-    except sqlite3.OperationalError:
-        echo(f"{stars(4)}The Google Chrome Is Clean Or No Find Files The Google Chrome.")
+            elif start[0] == '8':
+                formProfiles(True)
+            
+            elif start[0] == '9':
+                topSite(True)
+
+            elif start[0] == '0':
+                Profile(False);Bookmarks(False);loginData(False);cookies(False);historyUrl(False)
+                historyDownlods(False);formInputText(False);formProfiles(False);topSite(False)
+                
+                ascMe = yesave()
+                if ascMe[0]  == True:save(ascMe[1], inf)
+            
+            elif start[0] == 'q':
+                exit()
+
+            else:
+                echo(f"{stars(4)}Error input")
+                exit()
+
+        except Exception as e:
+            echo(f"{stars(4)}The Google Chrome Is Clean Or No Find Files The Google Chrome.{e}")
+            break
     
     echo(f"{stars(1)}Thank You For Use Me.")
