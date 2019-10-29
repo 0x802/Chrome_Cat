@@ -26,17 +26,16 @@
 import os 
 import sys
 
-from colorama import title
 try:
     import sqlite3
 except ImportError:
-    print("[!!!] Error import 'sqlite3' model")
+    print("[!] Error import 'sqlite3' model")
     exit()
     
 try:
     import json
 except ImportError:
-    print("[!!!] Error import 'json' model")
+    print("[!] Error import 'json' model")
     exit()
 
 #######################
@@ -253,7 +252,7 @@ def loginData(*args, **kwargs):
         # if user != '' and password != b'':
         echo(f"{stars(1) if url != '' else stars(2)}Url : "+
              f"{url} \n{stars(1) if user != '' else stars(2)}User: "+
-             f"{user}\n{stars(1) if password != b'' else stars(2)}pass: {password.decode('ascii')}\n")
+             f"{user}\n{stars(1) if password != b'' else stars(2)}pass: {password}\n")
 
         HELP.append([f"{'='*20}\n{url}", user,password])
     
@@ -332,16 +331,15 @@ def Profile(*args, **kwargs):
 def get(*args, **kwargs):
     
     PATH    = str()
-    G2      = 'AppData/Local' if 'win' in sys.platform else '.config'
-    G3      = ['Google/Chrome/User Data', 'Google/Chrome/User Data'] if 'win' in sys.platform else ['google-chrome', 'chromium']
+    G2      = 'AppData\\Local' if 'win' in sys.platform else '.config'
+    G3      = ['Google\\Chrome\\User Data'] if 'win' in sys.platform else ['google-chrome', 'chromium']
     G1      = 'Default'
 
     for i in G3:
         try:
-            PATH = os.path.join(os.environ.get("HOME"), G2, i, G1 if args[0] != 'Local State' else '')
-            os.open(PATH,0)
-            break
-
+            PATH = os.path.join(os.environ.get('USERPROFILE' if 'win' in sys.platform else 'HOME'), G2, i, G1 if args[0] != 'Local State' else '')
+            if os.path.isdir(PATH): break
+            
         except FileNotFoundError:
             pass
 
@@ -412,7 +410,7 @@ def yesave():
         exit()
 
     elif n1[0].upper() == 'Y':
-        n2 = input(f"{stars(3)}Enter the name save file default(google_out.txt):{stars(5)}: ")
+        n2 = input(f"{stars(3)}Enter the name save file:")
         if n2 == '':
             file = 'google_out.txt'
         else:
