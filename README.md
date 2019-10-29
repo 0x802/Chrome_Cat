@@ -7,6 +7,7 @@
 
 ###  _Features_
 
+- Works on ( Windows Systems ) or ( Linux Systems )
 - Displays the name and email of the Chrome owner
 - Displays bookmarks in Chrome
 - Displays the name and passwords of sites registered in Chrome
@@ -16,16 +17,15 @@
 - Displays the top 10 sites for Chrome owner
 - Allows you to extract the results in a text file
 
-
 ------------------------------------------------------------
 ### _Supports_
-- Google chrome Web Browser ( Linux System ) **all versions**
-- Chromium Web Browser ( Linux System ) **all versions**
+- Google chrome Web Browser **all versions**
+- Chromium Web Browser **all versions**
 - Using:
   - Python 3
-  
-- **Please close your web browser when running this tool**
 
+### Important
+- ***Please close your web browser when running this tool***
 
 ------------------------------------------------------------
 ###  _Install_
